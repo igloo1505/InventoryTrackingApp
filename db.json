@@ -1,0 +1,10 @@
+{
+  "Inventory": [
+    {
+      "id": 1,
+      "description": "lorem lorem lorem ipsum",
+      "quantity": "24",
+      "date": "04/19/1988"
+    }
+  ]
+}

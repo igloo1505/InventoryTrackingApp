@@ -9,6 +9,10 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 //!! DEFINE ROUTES here
+app.use("/auth", require("./routes/Auth"));
+app.use("/employees", require("./routes/Employees"));
+app.use("/inventory", require("./routes/Inventory"));
+app.use("/locations", require("./routes/Locations"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
