@@ -3,8 +3,12 @@
     {
       "id": 1,
       "description": "lorem lorem lorem ipsum",
-      "quantity": "24",
-      "date": "04/19/1988"
+      "quantity": 24,
+      "received_date": "04/19/1988",
+      "sale_price": 12.48,
+      "purchase_price": 8.49,
+      "reorder_at": 10,
+      "location": 12345
     }
   ]
 }

@@ -5,7 +5,7 @@ const SearchBar = () => {
     <nav style={{ marginBottom: "30px" }}>
       <div className="nav-wrapper">
         <form>
-          <div className="input-field purple darken-2">
+          <div className="input-field blue ">
             <input id="search" type="search" required />
             <label className="label-icon" htmlFor="search">
               <i className="material-icons">search</i>

@@ -20,9 +20,21 @@ router.post(
     }
     const { firstName, lastName, email, password } = req.body;
 
-    //!! 'User' here refers specifically to user model
+    //!! 'User' here refers specifically to user model,
+    //!! use this syntax for inventory route later
     try {
       let user = await User.findOne({ email: email });
+      if (user) {
+        return res.status(400).json({ msg: "User already exists" });
+      }
+      //!!   overly verbose but used to illustrate for future use
+      // user is refering to variable initialized above, User is referring specifically to User model
+      user = new User({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+      });
     } catch (error) {}
   }
 );
