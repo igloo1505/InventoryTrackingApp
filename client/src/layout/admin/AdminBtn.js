@@ -1,23 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const AdminBtn = () => {
   return (
     <div className="fixed-action-btn" style={{ marginRight: "80px" }}>
-      <a
-        href="#add-emp-modal"
-        className="btn-floating btn-large red darken-2 modal-trigger"
-      >
+      <Link to="/admin" className="btn-floating btn-large red darken-2">
         <i className="large material-icons">trending_up</i>
-      </a>
+      </Link>
       <ul>
         <li className="btn-floating green modal-trigger">
-          <a href="#sale-modal" className="modal-trigger">
-            <i className="material-icons">monetization_on</i>
+          <a href="#add-emp-modal" className="modal-trigger">
+            <i className="material-icons">person_add</i>
           </a>
         </li>
         <li className="btn-floating grey">
           <a href="#employee-list-modal" className="modal-trigger">
-            <i className="material-icons">call_received</i>
+            <i className="material-icons">person</i>
           </a>
         </li>
       </ul>

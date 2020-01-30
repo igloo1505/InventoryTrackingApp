@@ -1,5 +1,8 @@
 import React, { useEffect, Fragment, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
+import Admin from "./layout/admin/pages/Admin";
+import Home from "./pages/Home";
 import AddLogModal from "./layout/modals/AddLogModal";
 import EditLogModal from "./layout/modals/EditLogModal";
 import AddEmpModal from "./layout/admin/AddEmpModal";
@@ -22,13 +25,18 @@ const App = () => {
     <Fragment>
       <SearchBar />
       <div className="container">
-        <AddLogModal />
-        <AddEmpModal />
-        <TechListModal />
-        <EditLogModal />
-        <AdminBtn style={{ marginRight: "80px" }} />
-        <AddBtn />
-        {loggedIn ? <Logs /> : <Login />}
+        <Router>
+          <AddLogModal />
+          <AddEmpModal />
+          <TechListModal />
+          <EditLogModal />
+          <AdminBtn />
+          <AddBtn />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/admin" component={Admin} />
+          </Switch>
+        </Router>
       </div>
     </Fragment>
   );
