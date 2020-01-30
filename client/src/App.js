@@ -2,7 +2,10 @@ import React, { useEffect, Fragment, useState } from "react";
 import "materialize-css/dist/css/materialize.min.css";
 import AddLogModal from "./layout/modals/AddLogModal";
 import EditLogModal from "./layout/modals/EditLogModal";
+import AddEmpModal from "./layout/admin/AddEmpModal";
+import TechListModal from "./layout/admin/TechListModal";
 import M from "materialize-css/dist/js/materialize.min.js";
+import AdminBtn from "./layout/admin/AdminBtn";
 import AddBtn from "./layout/AddBtn";
 import SearchBar from "./layout/SearchBar";
 import Login from "./pages/Login";
@@ -20,7 +23,10 @@ const App = () => {
       <SearchBar />
       <div className="container">
         <AddLogModal />
+        <AddEmpModal />
+        <TechListModal />
         <EditLogModal />
+        <AdminBtn style={{ marginRight: "80px" }} />
         <AddBtn />
         {loggedIn ? <Logs /> : <Login />}
       </div>

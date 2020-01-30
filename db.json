@@ -1,14 +1,19 @@
 {
-  "Inventory": [
-    {
-      "id": 1,
-      "description": "lorem lorem lorem ipsum",
-      "quantity": 24,
-      "received_date": "04/19/1988",
-      "sale_price": 12.48,
-      "purchase_price": 8.49,
-      "reorder_at": 10,
-      "location": 12345
-    }
-  ]
+  "Inventory": [{
+    "id": 1,
+    "description": "lorem lorem lorem ipsum",
+    "quantity": 24,
+    "received_date": "04/19/1988",
+    "sale_price": 12.48,
+    "purchase_price": 8.49,
+    "reorder_at": 10,
+    "location": 12345
+  }],
+  "Employees": [{
+    "id": 1,
+    "firstName": "Andrew",
+    "lastName": "Iglinski",
+    "email": "Iglooworks1505@gmail.com",
+    "supervisor": true
+  }]
 }

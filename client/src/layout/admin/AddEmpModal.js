@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const EditEmpModal = () => {
+const AddEmpModal = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [supervisor, setSupervisor] = useState(false);
@@ -9,58 +9,80 @@ const EditEmpModal = () => {
 
   const onSubmit = () => {
     if (firstName === "" || email === "" || lastName === "") {
-      e.preventDefault();
       M.toast({ html: "Oh no. Please fill this out completely" });
     }
-    console.log(description, quantity, location, received_date);
+    console.log(firstName, lastName, email, supervisor);
+    setFirstName("");
+    setLastName("");
+    setSupervisor(false);
+    setEmail("");
   };
 
-  useEffect(() => setReceivedDate(Date.now()), []);
-
   return (
-    <div id="edit-log-modal" className="modal" style={{ width: "80%" }}>
+    <div id="add-emp-modal" className="modal" style={{ width: "80%" }}>
       <div className="modal-content">
-        <h4>Edit Item</h4>
+        <h4>Add Employee</h4>
         <div className="row">
           <div className="col s12">
             <input
               type="text"
-              name="description"
-              value={description}
-              onChange={e => setDescription(e.target.value)}
+              name="firstName"
+              value={firstName}
+              onChange={e => setFirstName(e.target.value)}
             />
-            <label htmlFor="description" className="active">
-              Description
+            <label htmlFor="firstName" className="active">
+              First Name
             </label>
           </div>
         </div>
         <div className="row">
-          <div className="col s12 m6">
-            <input
-              type="number"
-              name="quantity"
-              value={quantity}
-              onChange={e => setQuantity(e.target.value)}
-            />
-            <label htmlFor="quantity">Quantity</label>
-          </div>
-          <div className="col s12 m6">
+          <div className="col s12">
             <input
               type="text"
-              name="location"
-              value={location}
-              onChange={e => setLocation(e.target.value)}
+              name="lastName"
+              value={lastName}
+              onChange={e => setLastName(e.target.value)}
             />
-            <label htmlFor="location">Location ID</label>
+            <label htmlFor="lastName" className="active">
+              Last Name
+            </label>
           </div>
         </div>
+        <div className="row">
+          <div className="col s12">
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <label htmlFor="email" className="active">
+              Email
+            </label>
+          </div>
+        </div>
+        <div className="row">
+          <p>
+            <label>
+              <input
+                type="checkbox"
+                className="filled-in"
+                value={supervisor}
+                onChange={e => setSupervisor(!supervisor)}
+                checked={supervisor}
+              />
+              <span>Supervisor access</span>
+            </label>
+          </p>
+        </div>
+
         <div className="modal-footer">
           <a
             href="#!"
             onClick={onSubmit}
             className="modal-close waves-effect waves-green btn "
           >
-            Enter
+            Add Employee
           </a>
         </div>
       </div>
@@ -68,4 +90,4 @@ const EditEmpModal = () => {
   );
 };
 
-export default EditEmpModal;
+export default AddEmpModal;

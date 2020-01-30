@@ -1,13 +1,13 @@
 import React from "react";
 
-const AddBtn = () => {
+const AdminBtn = () => {
   return (
-    <div className="fixed-action-btn">
+    <div className="fixed-action-btn" style={{ marginRight: "80px" }}>
       <a
-        href="#add-log-modal"
-        className="btn-floating btn-large blue darken-2 modal-trigger"
+        href="#add-emp-modal"
+        className="btn-floating btn-large red darken-2 modal-trigger"
       >
-        <i className="large material-icons">add</i>
+        <i className="large material-icons">trending_up</i>
       </a>
       <ul>
         <li className="btn-floating green modal-trigger">
@@ -25,4 +25,4 @@ const AddBtn = () => {
   );
 };
 
-export default AddBtn;
+export default AdminBtn;
