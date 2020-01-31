@@ -20,7 +20,7 @@ const EditLogModal = () => {
   return (
     <div id="edit-log-modal" className="modal" style={{ width: "80%" }}>
       <div className="modal-content">
-        <h4>Enter Item Data</h4>
+        <h4>Edit Item</h4>
         <div className="row">
           <div className="col s12">
             <input

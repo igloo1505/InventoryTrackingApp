@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Logs from "../logs/Logs";
 import Login from "./Login";
 
-const Home = () => {
-  const [loggedIn, setLoggedIn] = useState(true);
-
+const Home = ({ loggedIn }) => {
   return <div>{loggedIn ? <Logs /> : <Login />}</div>;
 };
 

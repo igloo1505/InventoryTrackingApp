@@ -1,19 +1,71 @@
 {
-  "Inventory": [{
-    "id": 1,
-    "description": "lorem lorem lorem ipsum",
-    "quantity": 24,
-    "received_date": "04/19/1988",
-    "sale_price": 12.48,
-    "purchase_price": 8.49,
-    "reorder_at": 10,
-    "location": 12345
-  }],
-  "Employees": [{
-    "id": 1,
-    "firstName": "Andrew",
-    "lastName": "Iglinski",
-    "email": "Iglooworks1505@gmail.com",
-    "supervisor": true
-  }]
+  "Inventory": [
+    {
+      "id": 1,
+      "description": "lorem lorem lorem ipsum",
+      "quantity": 24,
+      "received_date": "04/19/1988",
+      "sale_price": 12.48,
+      "purchase_price": 8.49,
+      "reorder_at": 10,
+      "location": 12345
+    },
+    {
+      "description": "Cake Batter",
+      "quantity": "5",
+      "location": "1234",
+      "date": "2020-01-31T19:18:53.435Z",
+      "id": 2
+    },
+    {
+      "description": "Fish Fry Batter",
+      "quantity": "12",
+      "location": "345",
+      "date": "2020-01-31T19:19:38.257Z",
+      "id": 3
+    },
+    {
+      "description": "Monster",
+      "quantity": "3",
+      "location": "543",
+      "date": "2020-01-31T19:20:31.488Z",
+      "id": 4
+    },
+    {
+      "description": "Test",
+      "quantity": "12",
+      "location": "",
+      "date": "2020-01-31T19:21:54.349Z",
+      "id": 5
+    },
+    {
+      "description": "new data model",
+      "quantity": "12",
+      "location": "2652",
+      "purchase_price": null,
+      "sale_price": null,
+      "reorder_at": null,
+      "date": "2020-01-31T19:31:24.778Z",
+      "id": 6
+    },
+    {
+      "description": "new data model",
+      "quantity": "12",
+      "location": "af345",
+      "purchase_price": null,
+      "sale_price": null,
+      "reorder_at": null,
+      "date": "2020-01-31T19:32:54.891Z",
+      "id": 7
+    }
+  ],
+  "Employees": [
+    {
+      "id": 1,
+      "firstName": "Andrew",
+      "lastName": "Iglinski",
+      "email": "Iglooworks1505@gmail.com",
+      "supervisor": true
+    }
+  ]
 }

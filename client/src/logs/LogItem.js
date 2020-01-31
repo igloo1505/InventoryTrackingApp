@@ -10,10 +10,11 @@ const LogItem = ({ log }) => {
           {log.description}
         </a>
         <br />
+        <span className="black-text" style={{ marginRight: "5px" }}>
+          Quantity: {log.quantity}
+        </span>
         <span className="grey-text">
           <Moment format="MMMM Do YYYY, h:mm:ss a" />
-
-          <span className="black-text right">{log.quantity}</span>
         </span>
         <a href="#">
           <i className="material-icons grey-text right">delete</i>

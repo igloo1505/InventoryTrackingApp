@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addLog } from "../../reducers/actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const AddLogModal = () => {
+const AddLogModal = ({ addLog }) => {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
-  const [received_date, setReceivedDate] = useState(null);
-  const [location, setLocation] = useState("");
-  const [reorder, setReorder] = useState(false);
+  const [location, setLocation] = useState(null);
 
   const onSubmit = () => {
-    setReceivedDate(Date());
     if (description === "" || quantity === 0 || location === null) {
       M.toast({ html: "Oh no. Please fill this out completely" });
     } else {
-      console.log(description, quantity, location, received_date);
+      const newLog = {
+        description,
+        quantity,
+        location,
+        purchase_price: null,
+        sale_price: null,
+        reorder_at: null,
+        date: new Date()
+      };
+      console.log(newLog);
+      addLog(newLog);
+      M.toast({ html: "New item received" });
     }
   };
 
@@ -27,6 +38,7 @@ const AddLogModal = () => {
               type="text"
               name="description"
               value={description}
+              required
               onChange={e => setDescription(e.target.value)}
             />
             <label htmlFor="description" className="active">
@@ -40,6 +52,7 @@ const AddLogModal = () => {
               type="number"
               name="quantity"
               value={quantity}
+              required
               onChange={e => setQuantity(e.target.value)}
             />
             <label htmlFor="quantity">Quantity</label>
@@ -49,6 +62,7 @@ const AddLogModal = () => {
               type="text"
               name="location"
               value={location}
+              required
               onChange={e => setLocation(e.target.value)}
             />
             <label htmlFor="location">Location ID</label>
@@ -68,4 +82,8 @@ const AddLogModal = () => {
   );
 };
 
-export default AddLogModal;
+AddLogModal.propTypes = {
+  addLog: PropTypes.func.isRequired
+};
+
+export default connect(null, { addLog })(AddLogModal);

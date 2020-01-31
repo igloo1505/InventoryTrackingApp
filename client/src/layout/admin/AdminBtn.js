@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const AdminBtn = () => {
+const AdminBtn = ({ loggedIn }) => {
+  const adminToggle = () => {
+    let p = window.location.pathname;
+    if (p == "/") {
+      return "/admin";
+    } else if (p == "/admin") {
+      return "/";
+    }
+  };
+
+  //   let cur = window.location.pathname;
+  //   let Pee = null;
+  //   if (cur == "/") {
+  //     let Pee = "/admin";
+  //     console.log(Pee);
+  //   } else if (cur == "/admin") {
+  //     let Pee = "/";
+  //     console.log(Pee);
+  //   }
+
   return (
     <div className="fixed-action-btn" style={{ marginRight: "80px" }}>
-      <Link to="/admin" className="btn-floating btn-large red darken-2">
+      <Link to={adminToggle} className="btn-floating btn-large red darken-2">
         <i className="large material-icons">trending_up</i>
       </Link>
       <ul>
