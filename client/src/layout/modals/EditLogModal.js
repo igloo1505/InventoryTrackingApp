@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { updateLog } from "../../reducers/actions/logActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const EditLogModal = () => {
+const EditLogModal = ({ current, updateLog }) => {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [received_date, setReceivedDate] = useState(null);
   const [location, setLocation] = useState("");
   const [reorder, setReorder] = useState(false);
 
+  useEffect(() => {
+    if (current) {
+      setDescription(current.description);
+      setQuantity(current.quantity);
+      setLocation(current.location);
+    }
+  }, [current]);
+
   const onSubmit = () => {
     if (description === "" || quantity === 0 || location === null) {
       M.toast({ html: "Oh no. Please fill this out completely" });
     }
-    console.log(description, quantity, location, received_date);
+    const upLog = {
+      id: current.id,
+      description,
+      quantity,
+      location
+    };
+    updateLog(upLog);
+    M.toast({ html: "log updated" });
   };
 
   useEffect(() => setReceivedDate(Date.now()), []);
@@ -68,4 +86,13 @@ const EditLogModal = () => {
   );
 };
 
-export default EditLogModal;
+EditLogModal.propTypes = {
+  current: PropTypes.object,
+  updateLog: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  current: state.log.current
+});
+
+export default connect(mapStateToProps, { updateLog })(EditLogModal);

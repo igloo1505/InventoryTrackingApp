@@ -11,16 +11,6 @@ const AdminBtn = ({ loggedIn }) => {
     }
   };
 
-  //   let cur = window.location.pathname;
-  //   let Pee = null;
-  //   if (cur == "/") {
-  //     let Pee = "/admin";
-  //     console.log(Pee);
-  //   } else if (cur == "/admin") {
-  //     let Pee = "/";
-  //     console.log(Pee);
-  //   }
-
   return (
     <div className="fixed-action-btn" style={{ marginRight: "80px" }}>
       <Link to={adminToggle} className="btn-floating btn-large red darken-2">

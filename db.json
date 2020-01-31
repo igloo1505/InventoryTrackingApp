@@ -1,16 +1,6 @@
 {
   "Inventory": [
     {
-      "id": 1,
-      "description": "lorem lorem lorem ipsum",
-      "quantity": 24,
-      "received_date": "04/19/1988",
-      "sale_price": 12.48,
-      "purchase_price": 8.49,
-      "reorder_at": 10,
-      "location": 12345
-    },
-    {
       "description": "Cake Batter",
       "quantity": "5",
       "location": "1234",
@@ -25,18 +15,10 @@
       "id": 3
     },
     {
+      "id": 4,
       "description": "Monster",
-      "quantity": "3",
-      "location": "543",
-      "date": "2020-01-31T19:20:31.488Z",
-      "id": 4
-    },
-    {
-      "description": "Test",
-      "quantity": "12",
-      "location": "",
-      "date": "2020-01-31T19:21:54.349Z",
-      "id": 5
+      "quantity": "5",
+      "location": "543"
     },
     {
       "description": "new data model",
