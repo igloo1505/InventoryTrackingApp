@@ -17,7 +17,8 @@ const initialState = {
   logs: null,
   current: null,
   loading: false,
-  error: null
+  error: null,
+  filtered: null
 };
 
 export default (state = initialState, action) => {
@@ -70,11 +71,16 @@ export default (state = initialState, action) => {
         ),
         loading: false
       };
+
     case SEARCH_LOGS:
+      const regex = new RegExp(`${action.payload}`, "gi");
+
       return {
         ...state,
-        logs: action.payload
+        filtered: state.logs.filter(log => log.description.match(regex)),
+        loading: false
       };
+
     case LOGS_ERROR:
       console.error(action.payload);
       return {

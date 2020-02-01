@@ -6,6 +6,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 
 const AddLogModal = ({ addLog }) => {
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [location, setLocation] = useState(null);
 
@@ -17,6 +18,7 @@ const AddLogModal = ({ addLog }) => {
         description,
         quantity,
         location,
+        category,
         purchase_price: null,
         sale_price: null,
         reorder_at: null,
@@ -67,6 +69,15 @@ const AddLogModal = ({ addLog }) => {
             />
             <label htmlFor="location">Location ID</label>
           </div>
+        </div>
+        <div className="col s12 m6">
+          <input
+            type="text"
+            name="category"
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+          />
+          <label htmlFor="category">Category</label>
         </div>
         <div className="modal-footer">
           <a

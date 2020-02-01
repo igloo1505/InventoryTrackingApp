@@ -145,21 +145,8 @@ export const sale = log => async dispatch => {
   }
 };
 
-export const searchLogs = text => async dispatch => {
-  try {
-    setLoading();
-    const res = await fetch(`/Inventory?q=${text}`);
-    const data = await res.json();
-    dispatch({
-      type: SEARCH_LOGS,
-      payload: data
-    });
-  } catch (error) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: error.response.status
-    });
-  }
+export const searchLogs = text => {
+  return { type: SEARCH_LOGS, payload: text };
 };
 
 export const setCurrent = log => {

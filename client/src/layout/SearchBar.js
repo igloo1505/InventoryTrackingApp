@@ -6,7 +6,8 @@ import { searchLogs } from "../reducers/actions/logActions";
 const SearchBar = ({ searchLogs }) => {
   const text = useRef("");
   const onChange = e => {
-    searchLogs(text.current.value);
+    searchLogs(e.target.value);
+    // searchLogs(text.current.value);
   };
   return (
     <nav style={{ marginBottom: "30px" }}>
