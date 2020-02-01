@@ -18,7 +18,7 @@ const TechListModal = ({ getEmployees, employee: { employees, loading } }) => {
           {!loading &&
             employees !== null &&
             employees.map(employee => (
-              <TechItem tech={employee} key={employee.id} />
+              <TechItem tech={employee} key={employee._id} />
             ))}
         </ul>
       </div>

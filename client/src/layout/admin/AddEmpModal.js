@@ -7,20 +7,32 @@ import M from "materialize-css/dist/js/materialize.min.js";
 const AddEmpModal = ({ addEmployee }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [supervisor, setSupervisor] = useState(false);
   const [email, setEmail] = useState("");
 
   const onSubmit = () => {
-    if (firstName === "" || email === "" || lastName === "") {
-      M.toast({ html: "Oh no. Please fill this out completely" });
+    if (
+      firstName === "" ||
+      email === "" ||
+      lastName === "" ||
+      password !== password2
+    ) {
+      M.toast({
+        html:
+          "Oh no. Please fill this out completely and make sure passwords match"
+      });
+    } else {
+      addEmployee({ firstName, lastName, email, password, supervisor });
+      M.toast({ html: `${firstName} was added` });
+      setFirstName("");
+      setLastName("");
+      setSupervisor(false);
+      setPassword("");
+      setPassword2("");
+      setEmail("");
     }
-
-    addEmployee({ firstName, lastName, email, supervisor });
-    M.toast({ html: `${firstName} was added` });
-    setFirstName("");
-    setLastName("");
-    setSupervisor(false);
-    setEmail("");
   };
 
   return (
@@ -63,6 +75,30 @@ const AddEmpModal = ({ addEmployee }) => {
             />
             <label htmlFor="email" className="active">
               Email
+            </label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col s6">
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+            <label htmlFor="password" className="active">
+              Password
+            </label>
+          </div>
+          <div className="col s6">
+            <input
+              type="password"
+              name="password2"
+              value={password2}
+              onChange={e => setPassword2(e.target.value)}
+            />
+            <label htmlFor="password2" className="active">
+              Confirm Password
             </label>
           </div>
         </div>

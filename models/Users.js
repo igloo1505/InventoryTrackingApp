@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = mongoose.Schema({
+const EmployeeSchema = mongoose.Schema({
   firstName: {
     type: String,
     required: true
@@ -17,6 +17,10 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  supervisor: {
+    type: Boolean,
+    default: false
+  },
   date: {
     type: Date,
     required: true,
@@ -24,4 +28,4 @@ const UserSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model("user", UserSchema);
+module.exports = mongoose.model("Employee", EmployeeSchema);

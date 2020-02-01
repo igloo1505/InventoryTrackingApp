@@ -10,8 +10,8 @@ app.use(express.json({ extended: false }));
 
 //!! DEFINE ROUTES here
 app.use("/auth", require("./routes/Auth"));
-app.use("/employees", require("./routes/Employees"));
-app.use("/inventory", require("./routes/Inventory"));
+app.use("/Employees", require("./routes/Employees"));
+app.use("/Inventory", require("./routes/Inventory"));
 app.use("/locations", require("./routes/Locations"));
 
 if (process.env.NODE_ENV === "production") {
