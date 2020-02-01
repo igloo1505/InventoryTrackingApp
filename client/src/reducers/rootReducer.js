@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 import logReducer from "./logReducer";
+import employeeReducer from "./employeeReducer";
 
 // !! First paramater here refers to the 'name' of the state, the second part refers to the reducer.
 // "log" in this case can be anything at this point, reducer must refer to appropriate reducer
 
-export default combineReducers({ log: logReducer });
+export default combineReducers({ log: logReducer, employee: employeeReducer });

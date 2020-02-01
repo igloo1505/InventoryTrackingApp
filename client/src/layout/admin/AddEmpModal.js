@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addEmployee } from "../../reducers/actions/employeeActions";
 import M from "materialize-css/dist/js/materialize.min.js";
 
-const AddEmpModal = () => {
+const AddEmpModal = ({ addEmployee }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [supervisor, setSupervisor] = useState(false);
@@ -11,7 +14,9 @@ const AddEmpModal = () => {
     if (firstName === "" || email === "" || lastName === "") {
       M.toast({ html: "Oh no. Please fill this out completely" });
     }
-    console.log(firstName, lastName, email, supervisor);
+
+    addEmployee({ firstName, lastName, email, supervisor });
+    M.toast({ html: `${firstName} was added` });
     setFirstName("");
     setLastName("");
     setSupervisor(false);
@@ -89,5 +94,8 @@ const AddEmpModal = () => {
     </div>
   );
 };
+AddEmpModal.propTypes = {
+  addEmployee: PropTypes.func.isRequired
+};
 
-export default AddEmpModal;
+export default connect(null, { addEmployee })(AddEmpModal);

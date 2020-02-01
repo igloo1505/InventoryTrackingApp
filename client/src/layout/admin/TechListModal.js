@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getEmployees } from "../../reducers/actions/employeeActions";
 import TechItem from "./TechItem";
 
-const TechListModal = () => {
-  const [techs, setTechs] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const TechListModal = ({ getEmployees, employee: { employees, loading } }) => {
   useEffect(() => {
-    getTechs();
+    getEmployees();
     // eslint-disable-next-line
   }, []);
-
-  const getTechs = async () => {
-    setLoading(true);
-    const res = await fetch("/Employees");
-    const data = await res.json();
-    setTechs(data);
-    setLoading(false);
-  };
 
   return (
     <div id="employee-list-modal" className="modal">
@@ -24,11 +16,21 @@ const TechListModal = () => {
         <h4>Employees</h4>
         <ul className="collection">
           {!loading &&
-            techs.map(tech => <TechItem tech={tech} key={tech.id} />)}
+            employees !== null &&
+            employees.map(employee => (
+              <TechItem tech={employee} key={employee.id} />
+            ))}
         </ul>
       </div>
     </div>
   );
 };
+TechListModal.prototypes = {
+  tech: PropTypes.object.isRequired,
+  getEmployees: PropTypes.func.isRequired
+};
 
-export default TechListModal;
+const mapStateToProps = state => ({
+  employee: state.employee
+});
+export default connect(mapStateToProps, { getEmployees })(TechListModal);

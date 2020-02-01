@@ -21,14 +21,10 @@
       "location": "543"
     },
     {
+      "id": 6,
       "description": "new data model",
       "quantity": "12",
-      "location": "2652",
-      "purchase_price": null,
-      "sale_price": null,
-      "reorder_at": null,
-      "date": "2020-01-31T19:31:24.778Z",
-      "id": 6
+      "location": "2652"
     },
     {
       "description": "new data model",
@@ -48,6 +44,13 @@
       "lastName": "Iglinski",
       "email": "Iglooworks1505@gmail.com",
       "supervisor": true
+    },
+    {
+      "firstName": "Tyler",
+      "lastName": "Durden",
+      "email": "iglooworks1505@gmail.com",
+      "supervisor": true,
+      "id": 2
     }
   ]
 }
