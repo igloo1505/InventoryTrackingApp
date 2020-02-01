@@ -3,6 +3,8 @@ import {
   SET_LOADING,
   LOGS_ERROR,
   ADD_LOG,
+  SALE,
+  RECEIVED,
   DELETE_LOG,
   SET_CURRENT,
   CLEAR_CURRENT,
@@ -59,6 +61,14 @@ export default (state = initialState, action) => {
         logs: state.logs.map(log =>
           log.id === action.payload.id ? action.payload : log
         )
+      };
+    case SALE:
+      return {
+        ...state,
+        logs: state.logs.map(log =>
+          log.id === action.payload.id ? action.payload : log
+        ),
+        loading: false
       };
     case SEARCH_LOGS:
       return {

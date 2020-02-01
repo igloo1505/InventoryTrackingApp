@@ -1,40 +1,22 @@
 {
   "Inventory": [
     {
+      "id": 2,
+      "quantity": 4,
       "description": "Cake Batter",
-      "quantity": "5",
-      "location": "1234",
-      "date": "2020-01-31T19:18:53.435Z",
-      "id": 2
-    },
-    {
-      "description": "Fish Fry Batter",
-      "quantity": "12",
-      "location": "345",
-      "date": "2020-01-31T19:19:38.257Z",
-      "id": 3
+      "location": "1234"
     },
     {
       "id": 4,
-      "description": "Monster",
-      "quantity": "5",
-      "location": "543"
+      "quantity": 4
     },
     {
       "id": 6,
-      "description": "new data model",
-      "quantity": "12",
-      "location": "2652"
+      "quantity": 10
     },
     {
-      "description": "new data model",
-      "quantity": "12",
-      "location": "af345",
-      "purchase_price": null,
-      "sale_price": null,
-      "reorder_at": null,
-      "date": "2020-01-31T19:32:54.891Z",
-      "id": 7
+      "id": 7,
+      "quantity": 2
     }
   ],
   "Employees": [
@@ -51,6 +33,107 @@
       "email": "iglooworks1505@gmail.com",
       "supervisor": true,
       "id": 2
+    }
+  ],
+  "Sale": [
+    {
+      "item": 1,
+      "month": 4,
+      "day": 19,
+      "year": 2020,
+      "amount": 14.48
+    },
+    {
+      "id": 7,
+      "item": "new data model",
+      "date": "2020-02-01T18:48:01.920Z",
+      "quantity": 3,
+      "amount": 0
+    },
+    {
+      "id": "6695d92c-2af2-4c94-af93-55e39dcb0c20",
+      "item": "new data model",
+      "date": "2020-02-01T18:50:26.628Z",
+      "quantity": 30,
+      "amount": null
+    },
+    {
+      "id": "6e919449-5582-43bc-a171-1c4524b35ff0",
+      "item": "new data model",
+      "date": "2020-02-01T18:50:38.873Z",
+      "quantity": 3,
+      "amount": 0
+    },
+    {
+      "id": "bc68a4fe-53e3-4fd6-bb69-60195dae4109",
+      "item": "Monster",
+      "date": "2020-02-01T18:53:36.278Z",
+      "quantity": 2,
+      "amount": null
+    },
+    {
+      "id": "8fca0ce1-43c3-4cc6-be70-16517788bf2c",
+      "item": "Monster",
+      "date": "2020-02-01T18:55:27.024Z",
+      "quantity": 7,
+      "amount": null
+    },
+    {
+      "id": "e316c956-bd80-4bc3-b90b-4476670e3a2e",
+      "item": "Monster",
+      "date": "2020-02-01T18:56:22.013Z",
+      "quantity": 4,
+      "amount": null
+    },
+    {
+      "id": "16dde9fa-c3f0-4dec-8e6a-ab84954fce34",
+      "item": "new data model",
+      "date": "2020-02-01T18:57:22.472Z",
+      "quantity": 11,
+      "amount": 0
+    },
+    {
+      "id": "a35329e2-993e-4ff7-91ff-5f127e9f5d37",
+      "item": "new data model",
+      "date": "2020-02-01T18:58:41.753Z",
+      "quantity": 11,
+      "amount": 0
+    },
+    {
+      "id": "25c17fa6-4914-434a-9942-d3e22370e059",
+      "item": "new data model",
+      "date": "2020-02-01T18:59:37.683Z",
+      "quantity": 11,
+      "amount": 0
+    },
+    {
+      "Sale_id": "a6b76a47-e351-4d4e-a916-9d5724deeb23",
+      "Sale_date": "2020-02-01T19:11:03.770Z",
+      "quantity": 2,
+      "amount": null,
+      "id": 8
+    },
+    {
+      "Sale_id": "f2e5e5a0-948f-46f1-a80b-e4e02b265902",
+      "Sale_date": "2020-02-01T19:13:04.327Z",
+      "quantity": 10,
+      "amount": null,
+      "id": 9
+    },
+    {
+      "Sale_id": "7d6d2cc9-c7a2-4668-abb4-1357a85864b0",
+      "Sale_date": "2020-02-01T19:18:55.200Z",
+      "quantity": 4,
+      "amount": null,
+      "id": 10
+    },
+    {
+      "Sale_id": "26c6dd20-d3a6-470f-bc9f-f2cd314939df",
+      "description": "Cake Batter",
+      "Sale_date": "2020-02-01T19:27:18.130Z",
+      "quantity": 4,
+      "amount": null,
+      "id": 11
     }
   ]
 }

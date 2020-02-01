@@ -1,6 +1,5 @@
 export const GET_LOGS = "GET_LOGS";
 export const SET_LOADING = "SET_LOADING";
-
 export const LOGS_ERROR = "LOGS_ERROR";
 export const ADD_LOG = "ADD_LOG";
 export const DELETE_LOG = "DELETE_LOG";
@@ -12,5 +11,6 @@ export const GET_EMPS = "GET_EMPS";
 export const ADD_EMP = "ADD_EMP";
 export const DELETE_EMP = "DELETE_EMP";
 export const UPDATE_EMP = "UPDATE_EMP";
-
+export const SALE = "SALE";
+export const RECEIVED = "RECEIVED";
 export const EMP_ERROR = "EMP_ERROR";
