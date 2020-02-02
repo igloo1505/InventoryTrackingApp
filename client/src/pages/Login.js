@@ -138,7 +138,7 @@ const Login = ({ addEmployee }) => {
           </p>
         </div>
         <div className="row">
-          <div className="col s12 m6">
+          <div className="col s12 m6" style={{ padding: "10px" }}>
             <button
               className="btn waves-effect waves-light"
               type="submit"
@@ -150,7 +150,7 @@ const Login = ({ addEmployee }) => {
               Register
             </button>
           </div>
-          <div className="col s12 m6">
+          <div className="col s12 m6" style={{ padding: "10px" }}>
             <button
               className="btn waves-effect waves-light modal-trigger"
               style={{ width: "100%" }}

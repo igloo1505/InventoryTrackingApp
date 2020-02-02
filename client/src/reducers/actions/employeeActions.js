@@ -77,7 +77,7 @@ export const addEmployee = employee => async dispatch => {
   } catch (error) {
     dispatch({
       type: EMP_ERROR,
-      payload: error.res.json
+      payload: error.response.json
     });
   }
 };
