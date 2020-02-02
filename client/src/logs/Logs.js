@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Preloader from "../layout/Preloader";
 import LogItem from "./LogItem";
 
-const Logs = ({ log: { logs, loading }, getLogs }) => {
+const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
   //!! useState used only for development, left this for future reference
   // const [logs, setLogs] = useState([]);
   // const [loading, setLoading] = useState(false);
@@ -18,6 +18,10 @@ const Logs = ({ log: { logs, loading }, getLogs }) => {
   if (loading || logs == null) {
     return <Preloader />;
   }
+  if (filtered !== null) {
+    logs = filtered;
+  }
+  console.log(filtered);
 
   return (
     <ul className="collection with-header">
