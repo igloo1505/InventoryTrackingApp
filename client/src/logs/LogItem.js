@@ -14,7 +14,7 @@ const LogItem = ({ log, deleteLog, setCurrent }) => {
     <li className="collection-item">
       <div>
         <a
-          href="#edit-log-modal"
+          href="#detail-log-modal"
           className="modal-trigger"
           onClick={() => setCurrent(log)}
         >

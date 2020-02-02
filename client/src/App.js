@@ -7,6 +7,7 @@ import Admin from "./layout/admin/pages/Admin";
 import Home from "./pages/Home";
 import AddLogModal from "./layout/modals/AddLogModal";
 import EditLogModal from "./layout/modals/EditLogModal";
+import DetailLogModal from "./layout/modals/ItemDetailModal";
 import AddEmpModal from "./layout/admin/AddEmpModal";
 import TechListModal from "./layout/admin/TechListModal";
 import SaleModal from "./layout/modals/SaleModal";
@@ -31,6 +32,7 @@ const App = () => {
           <Router>
             <AddLogModal />
             <AddEmpModal />
+            <DetailLogModal />
             <TechListModal />
             <EditLogModal />
             <SaleModal />

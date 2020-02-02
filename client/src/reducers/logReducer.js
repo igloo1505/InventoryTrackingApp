@@ -74,7 +74,6 @@ export default (state = initialState, action) => {
 
     case SEARCH_LOGS:
       const regex = new RegExp(`${action.payload}`, "gi");
-
       return {
         ...state,
         filtered: state.logs.filter(log => log.description.match(regex)),

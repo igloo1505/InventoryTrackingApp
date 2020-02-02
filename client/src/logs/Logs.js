@@ -18,7 +18,7 @@ const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
   if (loading || logs == null) {
     return <Preloader />;
   }
-  if (filtered !== null) {
+  if (filtered !== null && !loading) {
     logs = filtered;
   }
   console.log(filtered);
