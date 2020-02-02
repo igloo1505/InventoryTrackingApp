@@ -1,22 +1,58 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import M from "materialize-css/dist/js/materialize.min.js";
+import { addEmployee } from "../reducers/actions/employeeActions";
 
-const Login = () => {
+const Login = ({ addEmployee }) => {
+  const [supervisor, setSupervisor] = useState(false);
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    supervisorPassword: ""
   });
-  const { firstName, lastName, email, password, password2 } = user;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    password2,
+    supervisorPassword
+  } = user;
   const onChange = e => setUser({ ...user, [e.target.id]: e.target.value });
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log(
-      "Data collected, script to push to mongo through express goes here"
-    );
-    // console.log({ user });
+    if (firstName === "" || lastName === "" || email === "") {
+      M.toast({ html: "Please fill out the form completely" });
+    } else if (password !== password2) {
+      M.toast({ html: "Oh no. These passwords do not match" });
+    } else if (supervisorPassword == null) {
+      M.toast({ html: "Please Contact your supervisor to gain access" });
+    } else {
+      addEmployee({
+        firstName,
+        lastName,
+        email,
+        password,
+        password2,
+        supervisor,
+        supervisorPassword
+      });
+      M.toast({ html: `Congratulations. ${firstName} was added` });
+      setUser({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        password2: "",
+        supervisor: false,
+        supervisorPassword: ""
+      });
+    }
   };
 
   return (
@@ -72,21 +108,59 @@ const Login = () => {
         </div>
         <div className="row">
           <div className="input-field col s12">
+            <input
+              id="supervisorPassword"
+              type="password"
+              value={supervisorPassword}
+              className="validate"
+              onChange={onChange}
+            />
+            <label htmlFor="supervisorPassword">Supervisor Permissions</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s6">
             <input id="email" type="email" value={email} onChange={onChange} />
             <label htmlFor="email">Email</label>
           </div>
+
+          <p className="col s6">
+            <label>
+              <input
+                type="checkbox"
+                className="filled-in"
+                value={supervisor}
+                onChange={e => setSupervisor(!supervisor)}
+                checked={supervisor}
+              />
+              <span>Supervisor access</span>
+            </label>
+          </p>
         </div>
         <button
           className="btn waves-effect waves-light"
           type="submit"
+          style={{ width: "100%" }}
           onClick={onSubmit}
           name="action"
         >
           Register
-          <i className="material-icons right">send</i>
+          <i
+            className="material-icons"
+            style={{
+              paddingLeft: "10px"
+            }}
+          >
+            send
+          </i>
         </button>
       </form>
     </div>
   );
 };
-export default Login;
+
+Login.propTypes = {
+  addEmployee: PropTypes.func.isRequired
+};
+
+export default connect(null, { addEmployee })(Login);

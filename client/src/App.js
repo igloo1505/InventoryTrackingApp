@@ -22,7 +22,7 @@ const App = () => {
   useEffect(() => {
     M.AutoInit();
   });
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <Provider store={store}>

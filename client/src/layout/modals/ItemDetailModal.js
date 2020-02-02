@@ -32,48 +32,39 @@ const DetailLogModal = ({ current, updateLog }) => {
       <div className="modal-content">
         <div className="row">
           <div className="col s6">
-            <p>
-              <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>Item: </p>
+            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+              Item:
               {description}
             </p>
           </div>
           <div className="col s6">
-            <p>
-              <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>ID: </p>
+            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+              ID:
               {id}
             </p>
           </div>
         </div>
         <div className="row">
           <div className="col s6">
-            <p>
-              <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
-                In Stock:{" "}
-              </p>
-              {quantity}
+            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+              In Stock: {quantity}
             </p>
           </div>
           <div className="col s6">
-            <p>
-              <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
-                Location:{" "}
-              </p>
-              {location}
+            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+              Location: {location}
             </p>
           </div>
         </div>
         <div className="row">
           <div className="col s6">
-            <p>
-              <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
-                Category:{" "}
-              </p>
-              {category}
+            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+              Category: {category}
             </p>
           </div>
           <div className="col s6">
-            <p>
-              <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>Price: </p>
+            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+              Price:
               {salePrice}
             </p>
           </div>
