@@ -4,6 +4,7 @@ import {
   DELETE_EMP,
   UPDATE_EMP,
   SET_LOADING,
+  SIGN_IN,
   EMP_ERROR
 } from "./Types";
 
@@ -15,6 +16,21 @@ export const getEmployees = () => async dispatch => {
     dispatch({
       type: GET_EMPS,
       payload: data
+    });
+  } catch (error) {
+    dispatch({
+      type: EMP_ERROR,
+      payload: error.response.status
+    });
+  }
+};
+export const signIn = ({ employee }) => async dispatch => {
+  try {
+    setLoading();
+    console.log(employee);
+    dispatch({
+      type: SIGN_IN,
+      payload: employee
     });
   } catch (error) {
     dispatch({

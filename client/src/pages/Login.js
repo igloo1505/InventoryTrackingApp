@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import M from "materialize-css/dist/js/materialize.min.js";
+import M, { AutoInit } from "materialize-css/dist/js/materialize.min.js";
 import { addEmployee } from "../reducers/actions/employeeActions";
 
 const Login = ({ addEmployee }) => {
@@ -137,23 +137,30 @@ const Login = ({ addEmployee }) => {
             </label>
           </p>
         </div>
-        <button
-          className="btn waves-effect waves-light"
-          type="submit"
-          style={{ width: "100%" }}
-          onClick={onSubmit}
-          name="action"
-        >
-          Register
-          <i
-            className="material-icons"
-            style={{
-              paddingLeft: "10px"
-            }}
-          >
-            send
-          </i>
-        </button>
+        <div className="row">
+          <div className="col s12 m6">
+            <button
+              className="btn waves-effect waves-light"
+              type="submit"
+              style={{ width: "100%" }}
+              onClick={onSubmit}
+              name="action"
+            >
+              {" "}
+              Register
+            </button>
+          </div>
+          <div className="col s12 m6">
+            <button
+              className="btn waves-effect waves-light modal-trigger"
+              style={{ width: "100%" }}
+              name="action"
+              href="#sign-in-modal"
+            >
+              Sign In
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );

@@ -7,6 +7,7 @@ import Admin from "./layout/admin/pages/Admin";
 import Home from "./pages/Home";
 import AddLogModal from "./layout/modals/AddLogModal";
 import EditLogModal from "./layout/modals/EditLogModal";
+import SignInModal from "./layout/modals/SignInModal";
 import DetailLogModal from "./layout/modals/ItemDetailModal";
 import AddEmpModal from "./layout/admin/AddEmpModal";
 import TechListModal from "./layout/admin/TechListModal";
@@ -36,6 +37,7 @@ const App = () => {
             <TechListModal />
             <EditLogModal />
             <SaleModal />
+            <SignInModal />
             <AdminBtn />
             <AddBtn />
             <Switch>

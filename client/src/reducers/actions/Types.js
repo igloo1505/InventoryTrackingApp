@@ -14,3 +14,4 @@ export const UPDATE_EMP = "UPDATE_EMP";
 export const SALE = "SALE";
 export const RECEIVED = "RECEIVED";
 export const EMP_ERROR = "EMP_ERROR";
+export const SIGN_IN = "SIGN_IN";

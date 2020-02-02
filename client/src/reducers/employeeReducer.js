@@ -4,6 +4,7 @@ import {
   DELETE_EMP,
   UPDATE_EMP,
   SET_LOADING,
+  SIGN_IN,
   EMP_ERROR
 } from "../reducers/actions/Types";
 
@@ -21,6 +22,12 @@ export default (state = initialState, action) => {
         employees: action.payload,
         loading: false
       };
+    case SIGN_IN: {
+      return {
+        ...state,
+        loading: false
+      };
+    }
     case ADD_EMP:
       return {
         ...state,
