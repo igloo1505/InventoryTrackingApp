@@ -27,7 +27,15 @@ export const getEmployees = () => async dispatch => {
 export const signIn = ({ employee }) => async dispatch => {
   try {
     setLoading();
-    console.log(employee);
+    const res = await fetch("/Auth", {
+      method: "POST",
+      body: JSON.stringify(employee),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const data = await res.json();
+    console.log(data);
     dispatch({
       type: SIGN_IN,
       payload: employee
