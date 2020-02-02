@@ -13,7 +13,7 @@ const SaleModal = ({ sale, current }) => {
 
   useEffect(() => {
     if (current) {
-      setId(current.id);
+      setId(current._id);
       setDescription(current.description);
     }
   }, [current]);
@@ -23,7 +23,7 @@ const SaleModal = ({ sale, current }) => {
       id: id,
       quantity: current.quantity - quantity,
       description: current.description,
-      purchase_value: current.purchase_value,
+      purchase_price: current.purchase_value,
       sale_price: current.sale_price,
       reorder_at: current.reorder_at,
       received_date: current.received_date,

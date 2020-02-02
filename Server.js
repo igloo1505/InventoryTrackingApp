@@ -13,6 +13,7 @@ app.use("/auth", require("./routes/Auth"));
 app.use("/Employees", require("./routes/Employees"));
 app.use("/Inventory", require("./routes/Inventory"));
 app.use("/locations", require("./routes/Locations"));
+app.use("/Sale", require("./routes/Sales"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

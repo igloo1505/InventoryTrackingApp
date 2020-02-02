@@ -104,7 +104,7 @@ export const sale = log => async dispatch => {
       id: log.id,
       quantity: log.quantity,
       description: log.description,
-      purchase_value: log.purchase_value,
+      purchase_price: log.purchase_value,
       sale_price: log.sale_price,
       reorder_at: log.reorder_at,
       received_date: log.received_date,
@@ -120,9 +120,9 @@ export const sale = log => async dispatch => {
     });
     const data = await res.json();
     const sale = {
+      item_id: log.id,
       Sale_id: uuid(),
       description: data.description,
-      Sale_date: new Date(),
       quantity: log.quantity,
       amount: log.quantity * data.sale_price
     };
@@ -132,7 +132,7 @@ export const sale = log => async dispatch => {
       body: JSON.stringify(sale),
       headers: { "Content-Type": "application/json" }
     });
-    console.log(saleItem);
+    console.log(sale);
     dispatch({
       type: SALE,
       payload: saleItem
