@@ -34,6 +34,7 @@ export default (state = initialState, action) => {
         ...state,
         ...action.payload,
         authenticated: true,
+        user: action.payload.employee,
         loading: false
       };
     }

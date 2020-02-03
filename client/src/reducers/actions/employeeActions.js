@@ -1,3 +1,5 @@
+import axios from "axios";
+import setAuthToken from "../../util/setToken";
 import {
   GET_EMPS,
   ADD_EMP,
@@ -28,50 +30,37 @@ export const getEmployees = () => async dispatch => {
   }
 };
 
-export const setToken = () => {
-  if (localStorage.token) {
-    let authed = localStorage.token;
-    return authed;
-  }
-};
 const setUser = async () => {
-  try {
-    const res = await fetch("/Auth");
-    const data = await res.json();
-    dispatch({
-      type: SETUSER,
-      payload: data
-    });
-  } catch (error) {
-    dispatch({
-      type: EMP_ERROR,
-      payload: error.response
-    });
-  }
+  return async dispatch => {
+    debugger;
+    setAuthToken(localStorage.token);
+    try {
+      const res = await axios.get("/Auth");
+      dispatch({
+        type: SETUSER,
+        payload: res.data
+      });
+    } catch (error) {
+      dispatch({ type: EMP_ERROR });
+    }
+  };
 };
 
 export const signIn = ({ employee }) => async dispatch => {
-  try {
-    setLoading();
-    const res = await fetch("/Auth", {
-      method: "POST",
-      body: JSON.stringify(employee),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-
-    const data = await res.json();
-    setUser();
-    if (data.msg) {
-      M.toast({ html: data.msg });
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
     }
+  };
+
+  try {
+    const res = await axios.post("/Auth", employee, config);
     dispatch({
       type: SIGN_IN,
-      payload: data
+      payload: res.data
     });
+    setUser();
   } catch (error) {
-    // M.toast({ html: data.msg });
     dispatch({
       type: SIGN_IN_FAIL,
       payload: error.response.data

@@ -13,4 +13,4 @@ const Home = ({ employee: { authenticated } }) => {
 const mapStateToProps = state => ({
   employee: state.employee
 });
-export default connect(mapStateToProps, { setToken })(Home);
+export default connect(mapStateToProps)(Home);
