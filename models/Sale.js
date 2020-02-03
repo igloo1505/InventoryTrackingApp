@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 var moment = require("moment");
 
 const SaleSchema = mongoose.Schema({
-  item_id: {
+  Sale_id: {
     type: String,
     required: true
   },
-  Sale_id: {
+  item_id: {
     type: String,
     required: true
   },

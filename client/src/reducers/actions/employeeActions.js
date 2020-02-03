@@ -32,7 +32,6 @@ export const getEmployees = () => async dispatch => {
 
 const setUser = async () => {
   return async dispatch => {
-    debugger;
     setAuthToken(localStorage.token);
     try {
       const res = await axios.get("/Auth");
@@ -59,6 +58,7 @@ export const signIn = ({ employee }) => async dispatch => {
       type: SIGN_IN,
       payload: res.data
     });
+    setAuthToken(localStorage.token);
     setUser();
   } catch (error) {
     dispatch({

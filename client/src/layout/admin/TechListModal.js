@@ -4,11 +4,16 @@ import PropTypes from "prop-types";
 import { getEmployees } from "../../reducers/actions/employeeActions";
 import TechItem from "./TechItem";
 
-const TechListModal = ({ getEmployees, employee: { employees, loading } }) => {
+const TechListModal = ({
+  getEmployees,
+  employee: { employees, loading, authenticated }
+}) => {
   useEffect(() => {
-    getEmployees();
+    if (authenticated) {
+      getEmployees();
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [authenticated]);
 
   return (
     <div id="employee-list-modal" className="modal">

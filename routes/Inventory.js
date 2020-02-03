@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Item = require("../models/Items");
+const auth = require("../middleware/auth");
 
 // POST /inventory
 // Add to inventory
 // !! Private
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const {
     description,
     quantity,
@@ -38,7 +39,7 @@ router.post("/", async (req, res) => {
 // GET /inventory
 // !! PRIVATE
 
-router.get("/", async (req, res) => {
+router.get("/", auth, async (req, res) => {
   try {
     const items = await Item.find();
     res.json(items);
@@ -50,7 +51,7 @@ router.get("/", async (req, res) => {
 
 // PUT /inventory
 // !! Private
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   const {
     id,
     quantity,
@@ -70,7 +71,7 @@ router.put("/:id", async (req, res) => {
   if (location) fields.location = location;
   if (scannable) fields.scannable = scannable;
 
-  // !!! Check for admin credentials here for routes that need
+  // !!! Check for admin credentials here for routes that need, or to use across multiple businesses
   // Make sure user owns contact
   // if (contact.user.toString() !== req.user.id) {
   //   return res.status(401).json({ msg: 'Not authorized' });
@@ -91,7 +92,7 @@ router.put("/:id", async (req, res) => {
 
 // DELETE /inventory
 // !! Private
-router.delete("/:id", (req, res) => {
+router.delete("/:id", auth, (req, res) => {
   res.send("Delete from inventory");
 });
 

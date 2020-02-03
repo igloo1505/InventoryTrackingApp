@@ -12,23 +12,29 @@ import {
   UPDATE_LOG
 } from "./Types";
 import uuid from "uuid";
+import Axios from "axios";
 
-// !! This gets reset to be an axios call when backend is set up, use v 82 to restructer as well as previous projects
-export const getLogs = () => async dispatch => {
-  try {
-    setLoading();
-    const res = await fetch("/Inventory");
-    const data = await res.json();
-    dispatch({
-      type: GET_LOGS,
-      payload: data
-    });
-  } catch (error) {
-    dispatch({
-      type: LOGS_ERROR,
-      payload: error.response.status
-    });
+const config = {
+  headers: {
+    "Content-Type": "application/json"
   }
+};
+// !! Get logs reset to use axios
+export const getLogs = () => {
+  return async dispatch => {
+    setLoading();
+    try {
+      const res = await Axios.get("/Inventory");
+      dispatch({
+        type: GET_LOGS,
+        payload: res.data
+      });
+    } catch (error) {
+      dispatch({
+        type: LOGS_ERROR
+      });
+    }
+  };
 };
 
 //! ADD LOG TO BACKEND
@@ -36,15 +42,11 @@ export const getLogs = () => async dispatch => {
 export const addLog = log => async dispatch => {
   try {
     setLoading();
-    const res = await fetch("/Inventory", {
-      method: "POST",
-      body: JSON.stringify(log),
-      headers: { "Content-Type": "application/json" }
-    });
-    const data = await res.json();
+    const res = await Axios.post("/Inventory", log, config);
+
     dispatch({
       type: ADD_LOG,
-      payload: data
+      payload: res.data
     });
   } catch (error) {
     dispatch({
@@ -98,6 +100,11 @@ export const updateLog = log => async dispatch => {
 };
 
 export const sale = log => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
   try {
     setLoading();
     const saleItem = {
@@ -111,31 +118,22 @@ export const sale = log => async dispatch => {
       location: log.location,
       scannable: log.scannable
     };
-    const res = await fetch(`/Inventory/${log.id}`, {
-      method: "PUT",
-      body: JSON.stringify(saleItem),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    const data = await res.json();
     const sale = {
       item_id: log.id,
       Sale_id: uuid(),
-      description: data.description,
-      quantity: log.quantity,
-      amount: log.quantity * data.sale_price
+      description: log.description,
+      quantity: log.sale_quantity,
+      amount: log.amount
     };
+    const res = await Axios.put(`/Inventory/${log.id}`, saleItem, config);
+    // const data = await res.json();
 
-    await fetch("/Sale", {
-      method: "POST",
-      body: JSON.stringify(sale),
-      headers: { "Content-Type": "application/json" }
-    });
-    console.log(sale);
+    const respo = await Axios.post("/Sale", sale, config);
+    console.log(res.data);
+    console.log(respo.data);
     dispatch({
       type: SALE,
-      payload: saleItem
+      payload: res.data
     });
   } catch (error) {
     dispatch({

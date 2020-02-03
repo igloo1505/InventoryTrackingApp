@@ -6,14 +6,10 @@ import Preloader from "../layout/Preloader";
 import LogItem from "./LogItem";
 
 const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
-  //!! useState used only for development, left this for future reference
-  // const [logs, setLogs] = useState([]);
-  // const [loading, setLoading] = useState(false);
-
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
-  }, []);
+  }, [getLogs]);
 
   if (loading || logs == null) {
     return <Preloader />;
@@ -21,7 +17,6 @@ const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
   if (filtered !== null && !loading) {
     logs = filtered;
   }
-  console.log(filtered);
 
   return (
     <ul className="collection with-header">

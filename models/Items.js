@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require("moment");
 
 const ItemSchema = mongoose.Schema({
   description: {
@@ -22,8 +23,8 @@ const ItemSchema = mongoose.Schema({
     type: Number
   },
   received_date: {
-    type: Date,
-    default: new Date()
+    type: String,
+    default: moment().format("MMMM Do YYYY, h:mm:ss a")
   }
 });
 

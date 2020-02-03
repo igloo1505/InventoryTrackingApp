@@ -60,14 +60,14 @@ export default (state = initialState, action) => {
       return {
         ...state,
         logs: state.logs.map(log =>
-          log.id === action.payload.id ? action.payload : log
+          log.id === action.payload.item_id ? action.payload : log
         )
       };
     case SALE:
       return {
         ...state,
         logs: state.logs.map(log =>
-          log._id === action.payload.id ? action.payload : log
+          log.id === action.payload._id ? action.payload : log
         ),
         loading: false
       };

@@ -8,7 +8,9 @@ import { sale } from "../../reducers/actions/logActions";
 const SaleModal = ({ sale, current }) => {
   const [id, setId] = useState("");
   const [quantity, setQuantity] = useState(0);
+  const [saleQuantity, setSaleQuantity] = useState(0);
   const [description, setDescription] = useState("");
+
   const [price, setPrice] = useState("");
   const [value, setValue] = useState(null);
 
@@ -24,13 +26,15 @@ const SaleModal = ({ sale, current }) => {
     const log = {
       id: id,
       quantity: current.quantity - quantity,
+      sale_quantity: quantity * 1,
       description: current.description,
       purchase_price: current.purchase_value,
       sale_price: current.sale_price,
       reorder_at: current.reorder_at,
       received_date: current.received_date,
       location: current.location,
-      scannable: current.scannable
+      scannable: current.scannable,
+      amount: quantity * current.sale_price
     };
     sale(log);
     console.log(log);
