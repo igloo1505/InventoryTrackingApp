@@ -15,7 +15,7 @@ const SignInModal = ({ signIn }) => {
       M.toast({ html: "Please fill this out completely" });
     } else {
       signIn({ employee });
-      M.toast({ html: `Signed in` });
+
       setEmail("");
       setPassword("");
     }
@@ -46,7 +46,7 @@ const SignInModal = ({ signIn }) => {
           </div>
         </div>
         <button
-          className="btn waves-effect waves-light"
+          className="btn waves-effect waves-light modal-close"
           type="submit"
           style={{ width: "100%" }}
           onClick={onSubmit}

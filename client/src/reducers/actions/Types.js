@@ -15,3 +15,5 @@ export const SALE = "SALE";
 export const RECEIVED = "RECEIVED";
 export const EMP_ERROR = "EMP_ERROR";
 export const SIGN_IN = "SIGN_IN";
+export const SIGN_IN_FAIL = "SIGN_IN_FAIL";
+export const SETUSER = "SETUSER";

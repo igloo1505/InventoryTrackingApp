@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { CLEAR_CURRENT } from "../../reducers/actions/Types";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { moment } from "moment";
 import { sale } from "../../reducers/actions/logActions";
 
 const SaleModal = ({ sale, current }) => {
@@ -15,6 +16,7 @@ const SaleModal = ({ sale, current }) => {
     if (current) {
       setId(current._id);
       setDescription(current.description);
+      setValue(current.sale_price);
     }
   }, [current]);
 
@@ -65,6 +67,9 @@ const SaleModal = ({ sale, current }) => {
               onChange={e => setQuantity(e.target.value)}
             />
             <label htmlFor="quantity">Quantity</label>
+          </div>
+          <div className="col s12 m6">
+            <p>{value}</p>
           </div>
         </div>
         <div className="modal-footer">

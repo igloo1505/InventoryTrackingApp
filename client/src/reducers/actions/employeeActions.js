@@ -4,9 +4,12 @@ import {
   DELETE_EMP,
   UPDATE_EMP,
   SET_LOADING,
+  SETUSER,
+  SIGN_IN_FAIL,
   SIGN_IN,
   EMP_ERROR
 } from "./Types";
+import M from "materialize-css/dist/js/materialize.min.js";
 
 export const getEmployees = () => async dispatch => {
   try {
@@ -24,6 +27,29 @@ export const getEmployees = () => async dispatch => {
     });
   }
 };
+
+export const setToken = () => {
+  if (localStorage.token) {
+    let authed = localStorage.token;
+    return authed;
+  }
+};
+const setUser = async () => {
+  try {
+    const res = await fetch("/Auth");
+    const data = await res.json();
+    dispatch({
+      type: SETUSER,
+      payload: data
+    });
+  } catch (error) {
+    dispatch({
+      type: EMP_ERROR,
+      payload: error.response
+    });
+  }
+};
+
 export const signIn = ({ employee }) => async dispatch => {
   try {
     setLoading();
@@ -34,16 +60,21 @@ export const signIn = ({ employee }) => async dispatch => {
         "Content-Type": "application/json"
       }
     });
+
     const data = await res.json();
-    console.log(data);
+    setUser();
+    if (data.msg) {
+      M.toast({ html: data.msg });
+    }
     dispatch({
       type: SIGN_IN,
-      payload: employee
+      payload: data
     });
   } catch (error) {
+    // M.toast({ html: data.msg });
     dispatch({
-      type: EMP_ERROR,
-      payload: error.response.status
+      type: SIGN_IN_FAIL,
+      payload: error.response.data
     });
   }
 };
@@ -62,7 +93,7 @@ export const deleteEmployee = id => async dispatch => {
   } catch (error) {
     dispatch({
       type: EMP_ERROR,
-      payload: error.response.status
+      payload: error.response.json
     });
   }
 };

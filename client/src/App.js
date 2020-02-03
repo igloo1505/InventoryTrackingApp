@@ -2,7 +2,9 @@ import React, { useEffect, Fragment, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "materialize-css/dist/css/materialize.min.css";
 import { Provider } from "react-redux";
+import { connect } from "react-redux";
 import store from "./store";
+import { setToken } from "./reducers/actions/employeeActions";
 import Admin from "./layout/admin/pages/Admin";
 import Home from "./pages/Home";
 import AddLogModal from "./layout/modals/AddLogModal";
@@ -23,6 +25,10 @@ const App = () => {
   useEffect(() => {
     M.AutoInit();
   });
+  useEffect(() => {
+    setToken();
+  }, []);
+
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
@@ -50,5 +56,8 @@ const App = () => {
     </Provider>
   );
 };
+const mapStateToProps = state => ({
+  authenticated: state.authenticated
+});
 
 export default App;
