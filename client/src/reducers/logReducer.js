@@ -60,15 +60,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         logs: state.logs.map(log =>
-          log.id === action.payload.item_id ? action.payload : log
+          log.id === action.payload._id ? action.payload : log
         )
       };
     case SALE:
+      console.log(action.payload);
       return {
         ...state,
         logs: state.logs.map(log =>
-          log.id === action.payload._id ? action.payload : log
+          log._id === action.payload._id ? action.payload : log
         ),
+        current: null,
         loading: false
       };
 

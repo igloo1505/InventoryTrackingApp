@@ -141,6 +141,7 @@ export const sale = log => async dispatch => {
       payload: error.response.status
     });
   }
+  clearCurrent();
 };
 
 export const searchLogs = text => {

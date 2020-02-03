@@ -9,7 +9,7 @@ const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
   useEffect(() => {
     getLogs();
     // eslint-disable-next-line
-  }, [getLogs]);
+  }, []);
 
   if (loading || logs == null) {
     return <Preloader />;
@@ -26,7 +26,7 @@ const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
       {!loading && logs.length === 0 ? (
         <p className="center">Oh no. Nothing's showing up.</p>
       ) : (
-        logs.map(log => <LogItem log={log} key={log._id} />)
+        logs.map(log => <LogItem log={log} key={log.id} />)
       )}
     </ul>
   );

@@ -21,12 +21,18 @@ const SaleModal = ({ sale, current }) => {
       setValue(current.sale_price);
     }
   }, [current]);
+  const quantFunc = val => {
+    setQuantity(current.quantity - val);
+    setSaleQuantity(val);
+    console.log(`Sale Quantity: ${val}`);
+    console.log(`Quantity : ${current.quantity - val}`);
+  };
 
   const onSubmit = () => {
     const log = {
       id: id,
-      quantity: current.quantity - quantity,
-      sale_quantity: quantity * 1,
+      quantity: quantity,
+      sale_quantity: saleQuantity,
       description: current.description,
       purchase_price: current.purchase_value,
       sale_price: current.sale_price,
@@ -66,9 +72,9 @@ const SaleModal = ({ sale, current }) => {
             <input
               type="number"
               name="quantity"
-              value={quantity}
+              defaultValue="0"
               required
-              onChange={e => setQuantity(e.target.value)}
+              onChange={e => quantFunc(e.target.value)}
             />
             <label htmlFor="quantity">Quantity</label>
           </div>
