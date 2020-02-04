@@ -7,6 +7,7 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   SALE,
+  GET_SALES,
   RECEIVED,
   SEARCH_LOGS,
   UPDATE_LOG
@@ -33,6 +34,21 @@ export const getLogs = () => {
       dispatch({
         type: LOGS_ERROR
       });
+    }
+  };
+};
+export const getSales = () => {
+  return async dispatch => {
+    setLoading();
+    try {
+      const res = await Axios.get("/Sale");
+      console.log(res.data);
+      dispatch({
+        type: GET_SALES,
+        payload: res.data
+      });
+    } catch (error) {
+      console.log(error);
     }
   };
 };

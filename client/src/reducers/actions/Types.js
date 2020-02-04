@@ -17,3 +17,4 @@ export const EMP_ERROR = "EMP_ERROR";
 export const SIGN_IN = "SIGN_IN";
 export const SIGN_IN_FAIL = "SIGN_IN_FAIL";
 export const SETUSER = "SETUSER";
+export const GET_SALES = "GET_SALES";

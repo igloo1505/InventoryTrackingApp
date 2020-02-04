@@ -17,7 +17,7 @@ const ReceivingModal = () => {
   };
 
   return (
-    <div id="add-log-modal" className="modal" style={{ width: "80%" }}>
+    <div id="receiving-modal" className="modal" style={{ width: "80%" }}>
       <div className="modal-content">
         <h4>Receiving</h4>
         <div className="row">

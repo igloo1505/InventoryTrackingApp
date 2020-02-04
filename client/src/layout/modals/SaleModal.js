@@ -26,7 +26,7 @@ const SaleModal = ({ sale, current }) => {
     setQuantity(current.quantity - val);
     setSaleQuantity(val);
     console.log(`Sale Quantity: ${val}`);
-    console.log(`Quantity : ${current.quantity - val}`);
+    console.log(`Value : ${current.quantity * value}`);
   };
 
   const onSubmit = () => {
@@ -79,8 +79,26 @@ const SaleModal = ({ sale, current }) => {
             />
             <label htmlFor="quantity">Quantity</label>
           </div>
-          <div className="col s12 m6">
-            <p>Remaining inStock: {quantity}</p>
+          <div className="col s12 m3">
+            <p>
+              Remaining inStock: <br />
+              {quantity > 0 ? (
+                quantity
+              ) : (
+                <h2
+                  className="material-icons red-text "
+                  style={{ fontSize: "40px" }}
+                >
+                  error_outline
+                </h2>
+              )}
+            </p>
+          </div>
+          <div className="col s12 m3">
+            <p>
+              Remaining inStock: <br />
+              {value == null ? <h3>Null</h3> : <h2>sale</h2>}
+            </p>
             <p>{value}</p>
           </div>
         </div>

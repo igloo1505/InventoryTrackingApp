@@ -9,7 +9,8 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
-  SEARCH_LOGS
+  SEARCH_LOGS,
+  GET_SALES
 } from "./actions/Types";
 
 //!! initialize state pertaining to this specific log
@@ -17,6 +18,7 @@ const initialState = {
   logs: null,
   current: null,
   loading: false,
+  sales: null,
   error: null,
   filtered: null
 };
@@ -32,6 +34,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         logs: action.payload,
+        loading: false
+      };
+    case GET_SALES:
+      return {
+        ...state,
+        sales: action.payload,
         loading: false
       };
     case ADD_LOG:
