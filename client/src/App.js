@@ -13,6 +13,7 @@ import DetailLogModal from "./layout/modals/ItemDetailModal";
 import AddEmpModal from "./layout/admin/AddEmpModal";
 import TechListModal from "./layout/admin/TechListModal";
 import SaleModal from "./layout/modals/SaleModal";
+import ReceivingModal from "./layout/modals/ReceivingModal";
 import M from "materialize-css/dist/js/materialize.min.js";
 import AdminBtn from "./layout/admin/AdminBtn";
 import AddBtn from "./layout/AddBtn";
@@ -36,6 +37,7 @@ const App = () => {
             <AddLogModal />
             <AddEmpModal />
             <DetailLogModal />
+            <ReceivingModal />
             <TechListModal />
             <EditLogModal />
             <SaleModal />

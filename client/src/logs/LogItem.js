@@ -15,7 +15,9 @@ const LogItem = ({ log, deleteLog, setCurrent }) => {
       <div>
         <a
           href="#detail-log-modal"
-          className="modal-trigger"
+          className={
+            "modal-trigger " + (log.quantity <= 5 ? "red-text" : "blue-text")
+          }
           onClick={() => setCurrent(log)}
         >
           {log.description}
@@ -39,6 +41,8 @@ const LogItem = ({ log, deleteLog, setCurrent }) => {
     </li>
   );
 };
+
+const mapStateToProps = state => {};
 
 LogItem.propTypes = {
   log: PropTypes.object.isRequired,

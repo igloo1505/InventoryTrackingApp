@@ -19,7 +19,10 @@ const Logs = ({ log: { logs, loading, filtered }, getLogs }) => {
   }
 
   return (
-    <ul className="collection with-header">
+    <ul
+      className="collection with-header"
+      style={{ maxHeight: "75vh", overflowY: "scroll" }}
+    >
       <li className="collection-header">
         <h4 className="center">Inventory</h4>
       </li>

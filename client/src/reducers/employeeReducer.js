@@ -14,7 +14,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 const initialState = {
   employees: null,
   authenticated: false,
-  user: null,
+  user: localStorage.getItem("employee"),
   token: localStorage.getItem("token"),
   loading: false,
   error: null
@@ -30,6 +30,7 @@ export default (state = initialState, action) => {
       };
     case SIGN_IN: {
       localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("employee", action.payload.employee);
       return {
         ...state,
         ...action.payload,

@@ -32,40 +32,59 @@ const DetailLogModal = ({ current, updateLog }) => {
       <div className="modal-content">
         <div className="row">
           <div className="col s6">
-            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+            <p style={{ fontWeight: "bold", fontSize: "1.4em" }}>
               Item:
-              {description}
+              <br />
+              <span style={{ fontWeight: "normal", fontSize: "1em" }}>
+                {description}
+              </span>
             </p>
           </div>
           <div className="col s6">
-            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+            <p style={{ fontWeight: "bold", fontSize: "1.4em" }}>
               ID:
-              {id}
+              <br />
+              <span style={{ fontWeight: "normal", fontSize: "1em" }}>
+                {id}
+              </span>
             </p>
           </div>
         </div>
         <div className="row">
           <div className="col s6">
-            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
-              In Stock: {quantity}
+            <p style={{ fontWeight: "bold", fontSize: "1.4em" }}>
+              In Stock: <br />
+              <span style={{ fontWeight: "normal", fontSize: "1em" }}>
+                {quantity}
+              </span>
             </p>
           </div>
           <div className="col s6">
-            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
-              Location: {location}
+            <p style={{ fontWeight: "bold", fontSize: "1.4em" }}>
+              Location: <br />
+              <span style={{ fontWeight: "normal", fontSize: "1em" }}>
+                {location}
+              </span>
             </p>
           </div>
         </div>
         <div className="row">
           <div className="col s6">
-            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
-              Category: {category}
+            <p style={{ fontWeight: "bold", fontSize: "1.4em" }}>
+              Category: <br />{" "}
+              <span style={{ fontWeight: "normal", fontSize: "1em" }}>
+                {" "}
+                {category}
+              </span>
             </p>
           </div>
           <div className="col s6">
-            <p style={{ fontWeight: "bold", fontSize: "1.2em" }}>
+            <p style={{ fontWeight: "bold", fontSize: "1.4em" }}>
               Price:
-              {salePrice}
+              <br />
+              <span style={{ fontWeight: "normal", fontSize: "1em" }}>
+                {salePrice}
+              </span>
             </p>
           </div>
         </div>

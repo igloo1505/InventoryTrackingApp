@@ -16,7 +16,7 @@ const AddBtn = () => {
           </a>
         </li>
         <li className="btn-floating grey">
-          <a href="#employee-list-modal" className="modal-trigger">
+          <a href="#receiving-modal" className="modal-trigger">
             <i className="material-icons">call_received</i>
           </a>
         </li>

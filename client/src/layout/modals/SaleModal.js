@@ -19,6 +19,7 @@ const SaleModal = ({ sale, current }) => {
       setId(current._id);
       setDescription(current.description);
       setValue(current.sale_price);
+      setQuantity(current.quantity);
     }
   }, [current]);
   const quantFunc = val => {
@@ -79,6 +80,7 @@ const SaleModal = ({ sale, current }) => {
             <label htmlFor="quantity">Quantity</label>
           </div>
           <div className="col s12 m6">
+            <p>Remaining inStock: {quantity}</p>
             <p>{value}</p>
           </div>
         </div>
