@@ -80,25 +80,22 @@ const SaleModal = ({ sale, current }) => {
             <label htmlFor="quantity">Quantity</label>
           </div>
           <div className="col s12 m3">
-            <p>
-              Remaining inStock: <br />
-              {quantity > 0 ? (
-                quantity
-              ) : (
-                <h2
-                  className="material-icons red-text "
-                  style={{ fontSize: "40px" }}
-                >
-                  error_outline
-                </h2>
-              )}
-            </p>
+            <span>Remaining inStock: </span>
+            <br />
+            {quantity > 0 ? (
+              quantity
+            ) : (
+              <h2
+                className="material-icons red-text "
+                style={{ fontSize: "40px" }}
+              >
+                error_outline
+              </h2>
+            )}
           </div>
           <div className="col s12 m3">
-            <p>
-              Remaining inStock: <br />
-              {value == null ? <h3>Null</h3> : <h2>sale</h2>}
-            </p>
+            <span>Remaining inStock: </span> <br />
+            {value == null ? <h3>Null</h3> : <h2>sale</h2>}
             <p>{value}</p>
           </div>
         </div>

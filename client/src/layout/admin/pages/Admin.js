@@ -1,14 +1,60 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import moment from "moment";
+import _ from "lodash";
 import { getSales } from "../../../reducers/actions/logActions";
+import SalesChart from "../SalesChart";
 
-const Admin = ({ getSales }) => {
+const Admin = ({ log: { logs, loading, filtered, sales }, getSales }) => {
   useEffect(() => {
     getSales();
     // eslint-disable-next-line
   }, []);
 
-  return <h1>Admin stuff here:</h1>;
+  // Gets the sum quantity of sales, not individual sales
+  var sumArr = 0;
+  // returns an array of whole sales objects for day retrieved
+  let sumToday = [];
+  let dateCount;
+  let xAxis;
+  const date = moment().format("MMMM Do YYYY");
+  if (sales !== null && !loading) {
+    const ret = sales.map(sale => sale.sale_date.split(",")[0]);
+    dateCount = _.groupBy(ret);
+    console.log(dateCount);
+    for (var x = 0; x < dateCount.length; x++) {
+      xAxis = Object.Keys(dateCount);
+    }
+    for (var i = 0; i < sales.length; i++) {
+      const d = sales[i].sale_date.split(",")[0];
+      if (d == date) {
+        sumToday.push(sales[i]);
+      }
+      sumArr += sales[i].quantity;
+    }
+
+    console.log(sales[1].sale_date.split(",")[0]);
+    console.log(dateCount);
+    console.log(`Daily sum: ${sumToday}`);
+    console.log(Object.keys(dateCount));
+  }
+
+  return (
+    <div>
+      <h1>Admin stuff here:</h1>
+      <h5>Sales Quantity: {sales !== null ? sales.length : null} </h5>
+      <h5>Sales Total: {sales !== null ? <SalesChart /> : null} </h5>
+    </div>
+  );
 };
 
-export default connect(null, { getSales })(Admin);
+const mapStateToProps = state => ({
+  log: state.log
+});
+
+Admin.propTypes = {
+  log: PropTypes.object.isRequired
+};
+
+export default connect(mapStateToProps, { getSales })(Admin);

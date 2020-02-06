@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Login from "./Login";
 
 const Home = ({ employee: { authenticated } }) => {
+  console.log(Date.now());
   return <Fragment>{authenticated ? <Logs /> : <Login />}</Fragment>;
 };
 

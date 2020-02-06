@@ -21,6 +21,11 @@ const SaleSchema = mongoose.Schema({
     type: Number,
     required: true
   },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
   sale_date: {
     type: String,
     required: true,

@@ -13,7 +13,7 @@ const ReceivingModal = () => {
   const [location, setLocation] = useState(null);
 
   const onSubmit = () => {
-    console.log("Submit goes here");
+    console.log("Receiving modal Submit goes here");
   };
 
   return (

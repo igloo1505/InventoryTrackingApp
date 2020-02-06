@@ -42,7 +42,7 @@ export const getSales = () => {
     setLoading();
     try {
       const res = await Axios.get("/Sale");
-      console.log(res.data);
+
       dispatch({
         type: GET_SALES,
         payload: res.data
@@ -139,7 +139,8 @@ export const sale = log => async dispatch => {
       Sale_id: uuid(),
       description: log.description,
       quantity: log.sale_quantity,
-      amount: log.amount
+      amount: log.amount,
+      day: log.day
     };
     const res = await Axios.put(`/Inventory/${log.id}`, saleItem, config);
     // const data = await res.json();
