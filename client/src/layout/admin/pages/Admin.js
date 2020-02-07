@@ -39,14 +39,9 @@ const Admin = ({ log: { logs, loading, filtered, sales }, getSales }) => {
   }
 
   return (
-    <div>
-      <h1>Admin stuff here:</h1>
+    <div style={{ maxHeight: "300px" }}>
       {sales !== null ? (
-        <SalesChart
-          ArrByDate={ArrByDate}
-          sumToday={sumToday}
-          style={{ padding: "15px", margin: "auto" }}
-        />
+        <SalesChart ArrByDate={ArrByDate} sumToday={sumToday} sales={sales} />
       ) : (
         <Preloader />
       )}
