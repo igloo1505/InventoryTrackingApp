@@ -3,23 +3,24 @@ import _ from "lodash";
 import Chart from "react-apexcharts";
 
 const SalesChart = ({ ArrByDate, sumToday, sales }) => {
-  console.log(sales);
+  console.log(sumToday);
 
   //   Array of sales quantity, not individual per day
-  let yQuantity = Date.parse("2020-02-07");
-  console.log(yQuantity);
+
   //   Array of dates as whole day
   let x = [];
   //   Array of INDIVIDUAL sales for day in array x
   let y = [];
+  console.log(Date.now());
 
   for (var i = 0; i < ArrByDate.length; i++) {
     y.push(ArrByDate[i].length);
-    let z = ArrByDate[i][0].slice(0, 3);
-    let q = ArrByDate[i][0].split(" ")[1];
-    x.push(z + " " + q);
+    let z = ArrByDate[i][0];
+    // let z = ArrByDate[i][0].slice(0, 3);
+    // let q = ArrByDate[i][0].split(" ")[1];
+    x.push(z);
   }
-  console.log(ArrByDate);
+  console.log(x);
   let uniq = [];
   let E2 = [];
   let byQuan = [];
@@ -36,17 +37,18 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
       E = { ...sales[i], date: sales[i].date.split("T")[0] };
       E2.push(E);
     }
+    console.log(E2);
     var grouped = _.groupBy(E2, "date");
     console.log(grouped);
     let sum = 0;
-    let gx = grouped["2020-02-07"];
+    let gx = grouped["2020-02-06"];
     for (var e = 0; e < gx.length; e++) {
       sum += gx[e].quantity;
     }
     console.log(sum);
   }
 
-  for (var a = 0; a < uniq.length; a++) console.log(uniq);
+  console.log(uniq);
 
   console.log(byQuan);
   console.log(E2);

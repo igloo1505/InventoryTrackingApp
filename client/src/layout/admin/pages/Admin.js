@@ -21,15 +21,17 @@ const Admin = ({ log: { logs, loading, filtered, sales }, getSales }) => {
   let x;
   let ArrByDate;
   let dateCount = [];
-  const date = moment().format("MMMM Do YYYY");
+  const date = moment()
+    .format()
+    .split("T")[0];
   if (sales !== null && !loading) {
-    const ret = sales.map(sale => sale.sale_date.split(",")[0]);
+    const ret = sales.map(sale => sale.date.split("T")[0]);
     x = _.groupBy(ret);
 
-    dateCount.push(x);
+    dateCount.push(ret);
 
     for (var i = 0; i < sales.length; i++) {
-      const d = sales[i].sale_date.split(",")[0];
+      const d = sales[i].date.split("T")[0];
       if (d == date) {
         sumToday.push(sales[i]);
       }
