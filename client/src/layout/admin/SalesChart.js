@@ -14,10 +14,10 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
 
   for (var i = 0; i < ArrByDate.length; i++) {
     y.push(ArrByDate[i].length);
-    let z = ArrByDate[i][0];
+    let z = ArrByDate[i][0].split("-");
     // let z = ArrByDate[i][0].slice(0, 3);
     // let q = ArrByDate[i][0].split(" ")[1];
-    x.push(z);
+    x.push(z[1] + "-" + z[2]);
   }
   console.log(x, y);
   let uniq = [];
@@ -40,12 +40,18 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
     console.log(E2);
     var grouped = _.groupBy(E2, "date");
     console.log(grouped);
-    let sum = 0;
-    let gx = grouped["2020-02-06"];
-    for (var e = 0; e < gx.length; e++) {
-      sum += gx[e].quantity;
+    let keys = Object.keys(grouped);
+    let vals = Object.values(grouped);
+    console.log(vals);
+    // let sum = 0;
+    for (var v = 0; v < keys.length; v++) {
+      let sum = 0;
+      let gx = keys[v];
+      for (var e = 0; e < vals[v].length; e++) {
+        sum += vals[v][e].quantity;
+      }
+      console.log(`${gx} sum: ${sum}`);
     }
-    console.log(sum);
   }
 
   console.log(uniq);
@@ -56,6 +62,9 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
   let options = {
     chart: {
       id: "lineChart"
+    },
+    grid: {
+      show: true
     },
     title: {
       text: "Individual Sales by day",
@@ -70,6 +79,17 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
         autoSelected: "zoom"
       },
       height: "300px"
+    },
+    yaxis: {
+      lines: {
+        show: false
+      },
+      min: 0
+      // labels: {
+      //   formatter: function(val) {
+      //     return Math.round(val);
+      //   }
+      // }
     },
     annotations: {
       yaxis: [
@@ -94,8 +114,12 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
         rotateAlways: true,
         show: true,
         rotate: -45
+      },
+      lines: {
+        show: false
       }
     }
+
     // xaxis: {
     //   labels: {
     //     datetimeFormatter: {
