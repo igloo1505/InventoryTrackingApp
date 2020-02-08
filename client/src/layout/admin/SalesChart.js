@@ -11,7 +11,6 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
   let x = [];
   //   Array of INDIVIDUAL sales for day in array x
   let y = [];
-  console.log(Date.now());
 
   for (var i = 0; i < ArrByDate.length; i++) {
     y.push(ArrByDate[i].length);
@@ -20,7 +19,7 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
     // let q = ArrByDate[i][0].split(" ")[1];
     x.push(z);
   }
-  console.log(x);
+  console.log(x, y);
   let uniq = [];
   let E2 = [];
   let byQuan = [];
@@ -37,6 +36,7 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
       E = { ...sales[i], date: sales[i].date.split("T")[0] };
       E2.push(E);
     }
+
     console.log(E2);
     var grouped = _.groupBy(E2, "date");
     console.log(grouped);
