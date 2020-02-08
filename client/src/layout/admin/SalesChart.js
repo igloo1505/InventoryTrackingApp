@@ -23,6 +23,8 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
   let uniq = [];
   let E2 = [];
   let byQuan = [];
+  let totalQuantity = [];
+  let totalDate = [];
   if (sales !== null && sales !== 0) {
     for (var U = 0; U < ArrByDate.length; U++) {
       if (uniq.indexOf(ArrByDate[U][0] == -1)) {
@@ -43,6 +45,7 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
     let keys = Object.keys(grouped);
     let vals = Object.values(grouped);
     console.log(vals);
+
     // let sum = 0;
     for (var v = 0; v < keys.length; v++) {
       let sum = 0;
@@ -50,7 +53,11 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
       for (var e = 0; e < vals[v].length; e++) {
         sum += vals[v][e].quantity;
       }
+      totalQuantity.push(sum);
+      totalDate.push(gx);
       console.log(`${gx} sum: ${sum}`);
+      console.log(totalQuantity);
+      console.log(totalDate);
     }
   }
 
@@ -135,10 +142,11 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
     {
       name: "Individual Sales",
       data: y
+    },
+    {
+      name: "Total Quantity",
+      data: totalQuantity
     }
-    // {
-    //   data: E2
-    // }
   ];
 
   return (
