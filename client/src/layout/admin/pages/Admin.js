@@ -7,11 +7,17 @@ import _ from "lodash";
 import { getSales } from "../../../reducers/actions/logActions";
 import SalesChart from "../SalesChart";
 
-const Admin = ({ log: { logs, loading, filtered, sales }, getSales }) => {
+const Admin = ({
+  log: { logs, loading, filtered, sales },
+  employee: { user },
+  getSales
+}) => {
   useEffect(() => {
     getSales();
     // eslint-disable-next-line
   }, []);
+
+  const { supervisor } = user;
 
   // Gets the sum quantity of sales, not individual sales
   // !!Need to get this working again
@@ -21,6 +27,7 @@ const Admin = ({ log: { logs, loading, filtered, sales }, getSales }) => {
   let x;
   let ArrByDate;
   let dateCount = [];
+
   const date = moment()
     .format()
     .split("T")[0];
@@ -43,7 +50,12 @@ const Admin = ({ log: { logs, loading, filtered, sales }, getSales }) => {
   return (
     <div style={{ maxHeight: "300px" }}>
       {sales !== null ? (
-        <SalesChart ArrByDate={ArrByDate} sumToday={sumToday} sales={sales} />
+        <SalesChart
+          ArrByDate={ArrByDate}
+          sumToday={sumToday}
+          sales={sales}
+          supervisor={supervisor}
+        />
       ) : (
         <Preloader />
       )}
@@ -52,7 +64,8 @@ const Admin = ({ log: { logs, loading, filtered, sales }, getSales }) => {
 };
 
 const mapStateToProps = state => ({
-  log: state.log
+  log: state.log,
+  employee: state.employee
 });
 
 Admin.propTypes = {

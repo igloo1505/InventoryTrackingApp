@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import _ from "lodash";
 import Chart from "react-apexcharts";
 
-const SalesChart = ({ ArrByDate, sumToday, sales }) => {
+const SalesChart = ({ ArrByDate, sumToday, sales, supervisor }) => {
   console.log(sumToday);
 
   //   Array of sales quantity, not individual per day
@@ -74,7 +74,7 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
       show: true
     },
     title: {
-      text: "Individual Sales by day",
+      text: "Quantity and Individual Sales by day",
       align: "left"
     },
     chart: {
@@ -151,14 +151,18 @@ const SalesChart = ({ ArrByDate, sumToday, sales }) => {
 
   return (
     <div>
-      <Chart
-        options={options}
-        series={series}
-        type="line"
-        height="300px"
-        width="100%"
-        style={{ padding: "20px", overflow: "show" }}
-      />
+      {supervisor ? (
+        <Chart
+          options={options}
+          series={series}
+          type="line"
+          height="300px"
+          width="100%"
+          style={{ padding: "20px", overflow: "show" }}
+        />
+      ) : (
+        <h1 className="center">Supervisor access only</h1>
+      )}
     </div>
   );
 };

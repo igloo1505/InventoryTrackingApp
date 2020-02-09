@@ -22,6 +22,13 @@ const ItemSchema = mongoose.Schema({
   reorder_at: {
     type: Number
   },
+  scannable: {
+    type: String
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
   received_date: {
     type: String,
     default: moment().format("MMMM Do YYYY, h:mm:ss a")
