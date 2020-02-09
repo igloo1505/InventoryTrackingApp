@@ -20,7 +20,6 @@ const Admin = ({
   const { supervisor } = user;
 
   // Gets the sum quantity of sales, not individual sales
-  // !!Need to get this working again
   var sumArr = 0;
   // returns an array of whole sales objects for day retrieved
   let sumToday = [];

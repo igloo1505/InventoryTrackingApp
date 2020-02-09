@@ -45,7 +45,12 @@ const App = () => {
             <AdminBtn />
             <AddBtn />
             <Switch>
-              <Route exact path="/" component={Home} loggedIn={loggedIn} />
+              <Route
+                exact
+                path="/"
+                component={Home}
+                setLoggedIn={setLoggedIn}
+              />
               <Route exact path="/admin" component={Admin} />
             </Switch>
           </Router>

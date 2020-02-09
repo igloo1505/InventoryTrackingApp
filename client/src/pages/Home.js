@@ -4,8 +4,11 @@ import { connect } from "react-redux";
 
 import Login from "./Login";
 
-const Home = ({ employee: { authenticated } }) => {
+const Home = ({ employee: { authenticated } }, setLoggedIn) => {
   console.log(Date.now());
+  if (authenticated) {
+    setLoggedIn(true);
+  }
   return <Fragment>{authenticated ? <Logs /> : <Login />}</Fragment>;
 };
 
