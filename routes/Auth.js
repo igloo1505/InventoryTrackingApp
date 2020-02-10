@@ -7,6 +7,8 @@ const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const Employee = require("../models/Users");
 
+const clockedIn = [];
+
 // GET /auth
 // !! Private
 router.get("/", auth, async (req, res) => {
@@ -14,12 +16,23 @@ router.get("/", auth, async (req, res) => {
     const employee = await Employee.findById(req.employee.id).isSelected(
       "-password"
     );
+    clockedIn.push(employee);
     res.json(employee);
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ msg: "not authorized" });
   }
 });
+
+// router.get("/clockedIn", async (req, res) => {
+//   try {
+//     const clockedIn = await
+//     res.json(clockedIn);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).json({ msg: "failed to get clocked in users" });
+//   }
+// });
 
 // POST /auth
 // !! Public

@@ -1,19 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getEmployees } from "../../reducers/actions/employeeActions";
+import {
+  getEmployees,
+  getClockedIn,
+  clockIn
+} from "../../reducers/actions/employeeActions";
 import TechItem from "./TechItem";
 
 const TechListModal = ({
   getEmployees,
-  employee: { employees, loading, authenticated }
+  getClockedIn,
+  clockIn,
+  employee: { employees, loading, authenticated, clockedIn, user }
 }) => {
+  const { _id } = user;
+  console.log(_id);
   useEffect(() => {
     if (authenticated) {
       getEmployees();
     }
     // eslint-disable-next-line
   }, [authenticated]);
+  useEffect(() => {
+    if (authenticated) {
+      getClockedIn();
+    }
+    // eslint-disable-next-line
+  }, [authenticated]);
+  useEffect(() => {
+    if (authenticated) {
+      clockIn({ _id });
+    }
+    // eslint-disable-next-line
+  }, [authenticated]);
+
+  let inNow = [];
+
+  if (employees !== null && clockedIn !== null) {
+    for (var i = 0; i < clockedIn.length; i++) {
+      for (var z = 0; z < employees.length; z++) {
+        if (clockedIn[i]._id == employees[z]._id) {
+          inNow.push(employees[z]);
+        }
+      }
+    }
+  }
+  console.log(inNow);
 
   return (
     <div id="employee-list-modal" className="modal">
@@ -21,8 +54,8 @@ const TechListModal = ({
         <h4>Employees</h4>
         <ul className="collection">
           {!loading &&
-            employees !== null &&
-            employees.map(employee => (
+            inNow !== null &&
+            inNow.map(employee => (
               <TechItem tech={employee} key={employee._id} />
             ))}
         </ul>
@@ -38,4 +71,8 @@ TechListModal.prototypes = {
 const mapStateToProps = state => ({
   employee: state.employee
 });
-export default connect(mapStateToProps, { getEmployees })(TechListModal);
+export default connect(mapStateToProps, {
+  getEmployees,
+  getClockedIn,
+  clockIn
+})(TechListModal);

@@ -6,6 +6,7 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const Employee = require("../models/Users");
+const ClockedIn = require("../models/ClockedIn");
 
 // POST /employees
 // !! Public
@@ -62,6 +63,28 @@ router.post(
     }
   }
 );
+
+// router.post("/clockedIn", async (req, res) => {
+//   const { _id } = req.body;
+//   try {
+//     let clockedIn = new ClockedIn(_id);
+//     const addClockedIn = await clockedIn.save();
+//     console.log(addClockedIn);
+//     res.json(addClockedIn);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("Failed to post as clocked in");
+//   }
+// });
+// router.get("/clockedIn", async (req, res) => {
+//   try {
+//     const clocked = await ClockedIn.find();
+//     res.json(clocked);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("failed to get clocked in");
+//   }
+// });
 
 // Router GET employees
 // !! Private

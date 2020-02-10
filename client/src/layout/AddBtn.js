@@ -1,12 +1,24 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { getClockedIn } from "../reducers/actions/employeeActions";
 
-const AddBtn = ({ employee: { user, authenticated }, log: { loading } }) => {
+const AddBtn = ({
+  employee: { user, authenticated },
+  log: { loading },
+  getClockedIn
+}) => {
   // const { authenticated, supervisor } = user;
+  let conditionalStyle;
+  if (authenticated) {
+    conditionalStyle = { display: "inline-block" };
+  } else if (!authenticated) {
+    conditionalStyle = { display: "none" };
+  }
+
   return (
     <Fragment>
-      <div className="fixed-action-btn">
+      <div className="fixed-action-btn" style={conditionalStyle}>
         <a
           href="#add-log-modal"
           className="btn-floating btn-large blue darken-2 modal-trigger"
@@ -36,7 +48,8 @@ const mapStateToProps = state => ({
 });
 AddBtn.propTypes = {
   employee: PropTypes.object.isRequired,
-  log: PropTypes.object
+  log: PropTypes.object,
+  getClockedIn: PropTypes.func
 };
 
-export default connect(mapStateToProps)(AddBtn);
+export default connect(mapStateToProps, { getClockedIn })(AddBtn);

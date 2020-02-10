@@ -11,6 +11,7 @@ app.use(express.json({ extended: false }));
 //!! DEFINE ROUTES here
 app.use("/auth", require("./routes/Auth"));
 app.use("/Employees", require("./routes/Employees"));
+app.use("/clockedIn", require("./routes/ClockedIn"));
 app.use("/Inventory", require("./routes/Inventory"));
 app.use("/locations", require("./routes/Locations"));
 app.use("/Sale", require("./routes/Sales"));

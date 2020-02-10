@@ -3,6 +3,8 @@ import {
   ADD_EMP,
   DELETE_EMP,
   UPDATE_EMP,
+  CLOCK_OUT,
+  GET_IN,
   SET_LOADING,
   SIGN_IN,
   SETUSER,
@@ -14,6 +16,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 const initialState = {
   employees: null,
   authenticated: false,
+  clockedIn: null,
   user: localStorage.getItem("employee"),
   token: localStorage.getItem("token"),
   loading: false,
@@ -26,6 +29,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         employees: action.payload,
+        loading: false
+      };
+    case GET_IN:
+      return {
+        ...state,
+        clockedIn: action.payload,
         loading: false
       };
     case SIGN_IN: {
@@ -66,6 +75,15 @@ export default (state = initialState, action) => {
         ...state,
         employees: state.employees.filter(
           employee => employee.id !== action.payload
+        ),
+        loading: false
+      };
+    case CLOCK_OUT:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        clockedIn: state.clockedIn.filter(
+          clockedIn => clockedIn._id !== action.payload
         ),
         loading: false
       };

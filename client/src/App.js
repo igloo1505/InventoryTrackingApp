@@ -26,8 +26,6 @@ const App = () => {
     M.AutoInit();
   });
 
-  const [loggedIn, setLoggedIn] = useState(false);
-
   return (
     <Provider store={store}>
       <Fragment>
@@ -45,12 +43,7 @@ const App = () => {
             <AdminBtn />
             <AddBtn />
             <Switch>
-              <Route
-                exact
-                path="/"
-                component={Home}
-                setLoggedIn={setLoggedIn}
-              />
+              <Route exact path="/" component={Home} />
               <Route exact path="/admin" component={Admin} />
             </Switch>
           </Router>
