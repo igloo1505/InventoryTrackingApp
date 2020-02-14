@@ -10,6 +10,7 @@ const AddBtn = ({
 }) => {
   // const { authenticated, supervisor } = user;
   let conditionalStyle;
+
   if (authenticated) {
     conditionalStyle = { display: "inline-block" };
   } else if (!authenticated) {

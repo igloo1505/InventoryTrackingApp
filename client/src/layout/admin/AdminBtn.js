@@ -13,7 +13,6 @@ const AdminBtn = ({ employee: { user }, loggedIn, getClockedIn }) => {
       return "/";
     }
   };
-  const { supervisor } = user;
 
   const getIn = () => {
     getClockedIn();
