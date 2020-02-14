@@ -18,7 +18,7 @@ const AddBtn = ({
 
   return (
     <Fragment>
-      <div className="fixed-action-btn" style={conditionalStyle}>
+      <div className="fixed-action-btn " style={conditionalStyle}>
         <a
           href="#add-log-modal"
           className="btn-floating btn-large blue darken-2 modal-trigger"
@@ -26,7 +26,7 @@ const AddBtn = ({
           <i className="large material-icons">add</i>
         </a>
         <ul>
-          <li className="btn-floating green modal-trigger">
+          <li className="btn-floating  green modal-trigger">
             <a href="#sale-modal" className="modal-trigger">
               <i className="material-icons">monetization_on</i>
             </a>

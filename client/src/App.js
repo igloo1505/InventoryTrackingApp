@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Admin from "./layout/admin/pages/Admin";
+import ClockOutBtn from "./layout/ClockOutBtn";
+import ClockOutModal from "./layout/modals/ClockOutModal";
 import Home from "./pages/Home";
 import AddLogModal from "./layout/modals/AddLogModal";
 import EditLogModal from "./layout/modals/EditLogModal";
@@ -38,10 +40,12 @@ const App = () => {
             <ReceivingModal />
             <TechListModal />
             <EditLogModal />
+            <ClockOutModal />
             <SaleModal />
             <SignInModal />
             <AdminBtn />
             <AddBtn />
+
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/admin" component={Admin} />
