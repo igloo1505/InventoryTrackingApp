@@ -13,14 +13,14 @@ const AdminBtn = ({ employee: { user }, loggedIn, getClockedIn }) => {
       return "/";
     }
   };
-
   const getIn = () => {
     getClockedIn();
   };
+
   let conditionalStyle;
-  if (user.supervisor) {
+  if (user != null && user.supervisor) {
     conditionalStyle = { display: "inline-block", marginRight: "80px" };
-  } else if (!user.supervisor) {
+  } else if (user != null && !user.supervisor) {
     conditionalStyle = { display: "none" };
   }
 

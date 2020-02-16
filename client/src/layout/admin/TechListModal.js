@@ -14,8 +14,7 @@ const TechListModal = ({
   clockIn,
   employee: { employees, loading, authenticated, clockedIn, user }
 }) => {
-  const { _id } = user;
-  console.log(_id);
+  // console.log(_id);
   useEffect(() => {
     if (authenticated) {
       getEmployees();
@@ -29,7 +28,8 @@ const TechListModal = ({
     // eslint-disable-next-line
   }, [authenticated]);
   useEffect(() => {
-    if (authenticated) {
+    if (user && authenticated) {
+      const { _id } = user;
       clockIn({ _id });
     }
     // eslint-disable-next-line
